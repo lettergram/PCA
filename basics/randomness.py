@@ -49,23 +49,23 @@ def normalized(s, x, y, area, colors):
 
 def PCA(matrix, s):
 
-    
+    m = matrix    
     matrix = np.matrix(matrix) * np.matrix(matrix).transpose()
     U,S,V = np.linalg.svd(matrix)
     E = np.sqrt(np.matrix(np.diag(S)))
     U = np.matrix(U)
 
-    W = U * E    
+    T = U * E
 
     x = np.array(W[0,:])[0]
     y = np.array(W[1,:])[0]
 
     plt.scatter(x, y, s=area*10, c=colors)
     plt.axis([-60, 60, -60, 60])
-    plt.title('normalized')
+    plt.title('Principal Component Analysis')
     plt.show()
 
-    return W
+    return T
 
 s = 1000
 colors = np.random.rand(s)
@@ -74,3 +74,4 @@ x, y = genRandomGauss(s, 10, 20, area, colors)
 normalized(s, x, y, area, colors)
 reduceDim(s, x, y, area, colors)
 W = PCA(np.vstack([x, y]).transpose(), 5)
+

@@ -1,5 +1,5 @@
 function problem(f)
-    file = '/Users/austin/Documents/Courses/cs498/hw8/seeds_dataset.csv';
+    file = 'seeds_dataset.csv';
     x = load(file);
     
     figure(1)
